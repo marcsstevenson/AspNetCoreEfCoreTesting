@@ -2,6 +2,7 @@
   "userSecretsId": "aspnet-Finance.WebUi-14356dd2-1d57-4b79-8ead-dee0e54a7d41",
 
     "dependencies": {
+        "Finance.Logic": "1.0.0-*",
         "Finance.Repository.EfCore": "1.0.0-*",
         "Generic.Framework": "1.0.0-*",
         "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",

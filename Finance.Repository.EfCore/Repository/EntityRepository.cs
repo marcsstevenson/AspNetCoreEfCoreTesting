@@ -31,7 +31,8 @@ namespace Finance.Repository.EfCore.Repository
 
         protected FinanceDbContext DataContext
         {
-            get { return _dataContext ?? (_dataContext = new FinanceDbContext()); }
+            //get { return _dataContext ?? (_dataContext = new FinanceDbContext()); }
+            get { return _dataContext; }
         }
 
         public void SetContext(FinanceDbContext dataContext)

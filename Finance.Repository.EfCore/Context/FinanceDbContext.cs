@@ -7,17 +7,19 @@ namespace Finance.Repository.EfCore.Context
 {
     public class FinanceDbContext : IdentityDbContext<ApplicationUser>
     {
-        public FinanceDbContext() : base()
-        {
+        //public FinanceDbContext() : base()
+        //{
             
-        }
+        //}
 
         public FinanceDbContext(DbContextOptions<FinanceDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+
+        public DbSet<CustomerTest> CustomerTest { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

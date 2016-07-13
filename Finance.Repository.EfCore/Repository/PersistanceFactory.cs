@@ -11,11 +11,16 @@ namespace Finance.Repository.EfCore.Repository
     {
         protected FinanceDbContext _dataContext;
 
-        public PersistanceFactory()
+        //public PersistanceFactory()
+        //{
+        //    _dataContext = new FinanceDbContext();
+        //}
+
+        public PersistanceFactory(FinanceDbContext dataContext)
         {
-            _dataContext = new FinanceDbContext();
+            _dataContext = dataContext;
         }
-        
+
         protected FinanceDbContext DataContext => _dataContext;
 
         public IRepository<T> BuildRepository<T>() where T : class, IEntity

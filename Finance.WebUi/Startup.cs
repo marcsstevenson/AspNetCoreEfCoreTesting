@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Finance.Repository.EfCore.Context;
 using Finance.Repository.EfCore.Models;
+using Finance.Repository.EfCore.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Finance.WebUi.Models;
 using Finance.WebUi.Services;
+using Generic.Framework.Interfaces.Entity;
 
 namespace Finance.WebUi
 {
@@ -53,6 +55,9 @@ namespace Finance.WebUi
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            //Persistance
+            services.AddTransient<IPersistanceFactory, PersistanceFactory>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

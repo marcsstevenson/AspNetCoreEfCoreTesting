@@ -1,6 +1,9 @@
-﻿@using System.Collections.Generic
+﻿@*This page is throwing an error for unknown reasons - TODO: sort it out*@
+
+@*@using System.Collections.Generic
 @using Microsoft.AspNetCore.Http
 @using Microsoft.AspNetCore.Http.Authentication
+@using Microsoft.AspNetCore.Identity
 @model LoginViewModel
 @inject SignInManager<ApplicationUser> SignInManager
 
@@ -89,4 +92,4 @@
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-}
+}*@

@@ -7933,6 +7933,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
+      "Finance.Logic >= 1.0.0-*",
       "Finance.Repository.EfCore >= 1.0.0-*",
       "Generic.Framework >= 1.0.0-*",
       "Microsoft.AspNetCore.Authentication.Cookies >= 1.0.0",
