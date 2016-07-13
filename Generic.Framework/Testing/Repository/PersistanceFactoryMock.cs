@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using ER.Fyndit.Repository.Testing.Mocking;
 using Generic.Framework.Caching.Providers;
 using Generic.Framework.Interfaces;
 using Generic.Framework.Interfaces.Entity;
@@ -43,20 +42,10 @@ namespace Generic.Framework.Testing.Repository
 
             return genericRepository;
         }
-        
-        public IGuidEntityRepository<T> BuildGuidEntityRepository<T>() where T : class, IGuidEntity
-        {
-            return GetEntityRepositoryMock<T, GuidEntityRepositoryMock<T>>();
-        }
-        
-        public IIntEntityRepository<T> BuildIntEntityRepository<T>() where T : class, IIntEntity
-        {
-            return GetEntityRepositoryMock<T, IntEntityRepositoryMock<T>>();
-        }
 
-        public IStringEntityRepository<T> BuildStringEntityRepository<T>() where T : class, IStringEntity
+        public IEntityRepository<T> BuildEntityRepository<T>() where T : class, IEntity
         {
-            return GetEntityRepositoryMock<T, StringEntityRepositoryMock<T>>();
+            return GetEntityRepositoryMock<T, EntityRepositoryMock<T>>();
         }
 
         public R GetEntityRepositoryMock<T, R>()

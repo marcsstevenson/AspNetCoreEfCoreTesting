@@ -9,14 +9,14 @@ using Generic.Framework.Interfaces.Entity;
 
 namespace Generic.Framework.AbstractClasses
 {
-    public abstract class Entity : ITracksTime, IEntity
+    public abstract class Entity : IEntity
     {
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
 
-        public dynamic Id { get; set; }
+        public Guid Id { get; set; }
 
-        public bool Equals(IId id)
+        public bool Equals(IGuidId id)
         {
             return this.Id == id.Id;
         }

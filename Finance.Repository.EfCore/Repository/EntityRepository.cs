@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Finance.Repository.EfCore.Context;
+using Generic.Framework.Enumerations;
 using Generic.Framework.Helpers;
+using Generic.Framework.Interfaces;
 using Generic.Framework.Interfaces.Entity;
 using Microsoft.EntityFrameworkCore;
 
-//using FinanceDbContext = Finance.Repository.EfCore.Contexts.FinanceDbContext;
-
 namespace Finance.Repository.EfCore.Repository
 {
-    public class EntityRepository<T> : IEntityRepository<T>//, IDisposable
+    public class EntityRepository<T> : IEntityRepository<T>
         where T : class, IEntity
     {
         private FinanceDbContext _dataContext;
@@ -23,23 +24,53 @@ namespace Finance.Repository.EfCore.Repository
             _dataContext = dataContext;
             _dbset = DataContext.Set<T>();
         }
-
-        public EntityRepository()
-        {
-            _dbset = DataContext.Set<T>();
-        }
-
+        
         protected FinanceDbContext DataContext
         {
-            //get { return _dataContext ?? (_dataContext = new FinanceDbContext()); }
             get { return _dataContext; }
         }
 
-        public void SetContext(FinanceDbContext dataContext)
+        public virtual void Delete(Guid id)
         {
-            _dataContext = dataContext;
+            Delete(i => i.Id == id);
         }
-        
+
+        public virtual void Delete(IEntity guidEntity)
+        {
+            Delete(i => i.Id == guidEntity.Id);
+        }
+
+        public virtual T FirstOrDefault(Guid id)
+        {
+            return this.FirstOrDefault(i => i.Id == id);
+        }
+
+        /// <summary>
+        /// Saves the the state of the entity to be modified or created
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual CommitAction Save(T entity)
+        {
+            if (this.Exists(entity))
+            {
+                this.Update(entity);
+                return CommitAction.Update;
+            }
+            else
+            {
+                this.Add(entity);
+                return CommitAction.Add;
+            }
+        }
+
+        public virtual bool Exists(T entity)
+        {
+            if (entity == null)
+                return false;
+
+            var count = this.Where(i => i.Id == entity.Id).Select(i => i.Id).Count();
+            return count > 0;
+        }
         public virtual bool Any()
         {
             return this._dbset.Any();
@@ -56,6 +87,9 @@ namespace Finance.Repository.EfCore.Repository
         /// <param name="entity"></param>
         public virtual void Add(T entity)
         {
+            if (entity.Id == Guid.Empty)
+                entity.SeedId();
+
             // ensure the dates are set correctly
             entity.SetForCreated();
             _dbset.Add(entity);
@@ -70,7 +104,7 @@ namespace Finance.Repository.EfCore.Repository
             entity.SetForModified();
             _dataContext.Entry(entity).State = EntityState.Modified;
         }
-        
+
         /// <summary>
         /// deletes the entity from the database
         /// </summary>
@@ -205,7 +239,7 @@ namespace Finance.Repository.EfCore.Repository
         {
             return _dbset.Where(predicate).SingleOrDefault<T>();
         }
-        
+
         //public void Dispose()
         //{
         //    this.DataContext.Dispose();

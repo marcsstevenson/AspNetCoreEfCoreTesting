@@ -23,8 +23,9 @@ namespace Generic.Repository.EfCore.UnitOfWork
             try
             {
                 action();
-                
-                ChangeTracker.AcceptAllChanges();
+
+                this._dbContext.SaveChanges(true);
+                //ChangeTracker.AcceptAllChanges();
 
                 return new CommitResult();
             }

@@ -31,7 +31,7 @@ namespace Finance.WebUi.Controllers.Api
 
         public IList<Customer> Get()
         {
-            var repoCompany = _persistanceFactory.BuildGuidEntityRepository<Customer>();
+            var repoCompany = _persistanceFactory.BuildEntityRepository<Customer>();
 
             CommitAction commitAction = CommitAction.None;
 
@@ -47,6 +47,11 @@ namespace Finance.WebUi.Controllers.Api
 
             //Add the result to the commit actions
             commitResult.CommitActions.Add(customer, commitAction);
+
+            if (commitResult.HasError)
+            {
+                var error = commitResult.ErrorMessage;
+            }
 
             var customers = repoCompany.AllList();
 

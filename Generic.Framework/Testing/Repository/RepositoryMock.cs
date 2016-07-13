@@ -54,16 +54,8 @@ namespace Generic.Framework.Testing.Repository
             entity.DateCreated = Clock.Now();
             entity.DateModified = Clock.Now();
 
-            //Set the Id if it is an int not greater than zero
-            if (entity.Id == null || (entity.Id is int && entity.Id <= 0))
-            {
-                //entity.Id = new Random().Next(1, int.MaxValue);
-                var currentMaxId = this._dbSet.Max(i => i.Id);
-                currentMaxId = currentMaxId ?? 0;
-
-                entity.Id = currentMaxId + 1; //One more than the maximum used
-            }
-
+            entity.SeedId();
+            
             _dbSet.Add(entity);
         }
 
@@ -103,7 +95,7 @@ namespace Generic.Framework.Testing.Repository
         /// <summary>
         /// deletes entities from the database based on a filter
         /// </summary>
-        /// <param name="where"></param>
+        /// <param name="predicate"></param>
         public void Delete(Expression<Func<T, Boolean>> predicate)
         {
             IEnumerable<T> objects = _dbSet.AsQueryable().Where<T>(predicate).ToList();

@@ -5,16 +5,16 @@ using Generic.Framework.Interfaces.Entity;
 
 namespace Generic.Framework.Helpers
 {
-    public class MiniCache<T> : List<T> where T : class, IGuidEntity
+    public class MiniCache<T> : List<T> where T : class, IEntity
     {
-        private readonly IGuidEntityRepository<T> _repository;
+        private readonly IEntityRepository<T> _repository;
 
-        public MiniCache(IGuidEntityRepository<T> repository)
+        public MiniCache(IEntityRepository<T> repository)
         {
             _repository = repository;
         }
 
-        public MiniCache(IGuidEntityRepository<T> repository, IEnumerable<T> existingList) : this(repository)
+        public MiniCache(IEntityRepository<T> repository, IEnumerable<T> existingList) : this(repository)
         {
             this.AddRange(existingList);
         }

@@ -1,6 +1,9 @@
-﻿namespace Generic.Framework.Interfaces.Entity
+﻿using System;
+
+namespace Generic.Framework.Interfaces.Entity
 {
-    public interface IEntity : ITracksTime, IId
+    public interface IEntity : ITracksTime, IGuidId
     {
+
     }
 }

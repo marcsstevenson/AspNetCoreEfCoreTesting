@@ -18,9 +18,7 @@ namespace Finance.Repository.EfCore.Context
         }
 
         public DbSet<Customer> Customer { get; set; }
-
-        public DbSet<CustomerTest> CustomerTest { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

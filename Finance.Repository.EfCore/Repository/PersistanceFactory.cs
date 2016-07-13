@@ -23,26 +23,11 @@ namespace Finance.Repository.EfCore.Repository
 
         protected FinanceDbContext DataContext => _dataContext;
 
-        public IRepository<T> BuildRepository<T>() where T : class, IEntity
+        public IEntityRepository<T> BuildEntityRepository<T>() where T : class, IEntity
         {
             return new EntityRepository<T>(this.DataContext);
         }
         
-        public IGuidEntityRepository<T> BuildGuidEntityRepository<T>() where T : class, IGuidEntity
-        {
-            return new GuidEntityRepository<T>(this.DataContext);
-        }
-        
-        public IIntEntityRepository<T> BuildIntEntityRepository<T>() where T : class, IIntEntity
-        {
-            return new IntEntityRepository<T>(this.DataContext);
-        }
-
-        public IStringEntityRepository<T> BuildStringEntityRepository<T>() where T : class, IStringEntity
-        {
-            return new StringEntityRepository<T>(this.DataContext);
-        }
-
         public IUnitOfWork BuildUnitOfWork()
         {
             return new UnitOfWork(this.DataContext);

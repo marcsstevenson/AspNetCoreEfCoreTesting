@@ -2,7 +2,7 @@
 
 namespace Finance.Logic.Crm
 {
-    public class Customer : GuidEntity
+    public class Customer : Entity
     {
     }
 }
