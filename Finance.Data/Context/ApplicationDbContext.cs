@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Finance.Data.Data
+namespace Finance.Data.Context
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

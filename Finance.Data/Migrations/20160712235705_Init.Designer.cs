@@ -1,9 +1,9 @@
 ﻿using System;
+using Finance.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
-using Finance.Data.Data;
 
 namespace Finance.Data.Migrations
 {
