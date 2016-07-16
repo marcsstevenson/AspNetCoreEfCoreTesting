@@ -1,7 +1,7 @@
-#:E:\Git\PlatinumFinance\Finance\Finance.WebUi\Finance.WebUi.xproj
-E:\Git\PlatinumFinance\Finance\Finance.WebUi\Finance.WebUi.xproj|E:\Git\PlatinumFinance\Finance\Finance.Logic\Finance.Logic.xproj
-E:\Git\PlatinumFinance\Finance\Finance.WebUi\Finance.WebUi.xproj|E:\Git\PlatinumFinance\Finance\Finance.Repository.EfCore\Finance.Repository.EfCore.xproj
-E:\Git\PlatinumFinance\Finance\Finance.WebUi\Finance.WebUi.xproj|E:\Git\PlatinumFinance\Finance\Generic.Framework\Generic.Framework.xproj
+#:E:\Git\PlatinumFinance\Finance\Finance.Api\Finance.Api.xproj
+E:\Git\PlatinumFinance\Finance\Finance.Api\Finance.Api.xproj|E:\Git\PlatinumFinance\Finance\Finance.Logic\Finance.Logic.xproj
+E:\Git\PlatinumFinance\Finance\Finance.Api\Finance.Api.xproj|E:\Git\PlatinumFinance\Finance\Finance.Repository.EfCore\Finance.Repository.EfCore.xproj
+E:\Git\PlatinumFinance\Finance\Finance.Api\Finance.Api.xproj|E:\Git\PlatinumFinance\Finance\Generic.Framework\Generic.Framework.xproj
 E:\Git\PlatinumFinance\Finance\Finance.Logic\Finance.Logic.xproj|E:\Git\PlatinumFinance\Finance\Generic.Framework\Generic.Framework.xproj
 E:\Git\PlatinumFinance\Finance\Finance.Repository.EfCore\Finance.Repository.EfCore.xproj|E:\Git\PlatinumFinance\Finance\Finance.Logic\Finance.Logic.xproj
 E:\Git\PlatinumFinance\Finance\Finance.Repository.EfCore\Finance.Repository.EfCore.xproj|E:\Git\PlatinumFinance\Finance\Generic.Framework\Generic.Framework.xproj
